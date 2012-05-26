@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>Nimbo suite</title>
+	<!-- client scripts -->
+	<% @client_scripts.each do |script| %>
+		<script src="/suites/<%= @suite_id %>/<%= script %>"></script>
+	<% end %>
+
+	<!-- frameworks scripts -->
+	<% @framework_scripts.each do |script| %>
+		<script src="/javascripts/<%= script %>"></script>
+	<% end %>
+</head>
+<body>
+</body>
+</html>
