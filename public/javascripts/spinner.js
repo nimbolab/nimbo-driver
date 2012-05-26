@@ -20,6 +20,7 @@ nimbo.spinner = {
 	_getSuite: function () {
 		var that = this;
 		if (that._status === 'idle') {
+			that._setStatus('polling');
 			$.get('/suite_get', function (data) {
 				that._onSuite(data);
 			});
@@ -30,6 +31,8 @@ nimbo.spinner = {
 		if (suite_id) {
 			this._setStatus('running');
 			this._runSuite(suite_id)
+		} else {
+			this._setStatus('idle');
 		}
 	},
 	_runSuite: function (suite_id) {
