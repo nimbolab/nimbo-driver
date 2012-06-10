@@ -29,7 +29,7 @@ class NimboDriver < Sinatra::Base
     { result: result }.to_json
   end
 
-  get '/suite_result' do
+  post '/suite_result' do
     result = params
     suite_id = nil
   end
