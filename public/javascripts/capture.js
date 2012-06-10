@@ -50,8 +50,9 @@ nimbo.capture = {
   },
   _setStatus: function (status) {
     this._status = status;
-    this.statusContainer.empty();
-    this.statusContainer.text(status);
+    document.getElementById('status').innerHTML = status;
+//     this.statusContainer.empty();
+//     this.statusContainer.text(status);
   }
 };
 
