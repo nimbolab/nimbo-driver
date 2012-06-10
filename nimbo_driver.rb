@@ -19,7 +19,6 @@ class NimboDriver < Sinatra::Base
     config = YAML.load_file("public/suites/#{suite_id}/.nimbo.yml")
     @suite_id = suite_id
     @client_scripts = config["src"]
-    @framework_scripts = framework_files[config["framework"]]
     erb :runner
   end
 
