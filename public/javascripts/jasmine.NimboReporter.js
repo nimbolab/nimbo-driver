@@ -20,7 +20,7 @@ jasmine.NimboReporter.prototype.reportRunnerResults = function (runner) {
 		}
 	}
 
-	top.nimbo.spinner.postMessage({
+	top.nimbo.capture.postMessage({
 		failed: failedCount,
 		passed: passedCount
 	});	
