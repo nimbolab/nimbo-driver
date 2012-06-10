@@ -4,8 +4,8 @@ nimbo.capture = {
   init: function () {
     var that = this;
 
-    that.suiteContainer = $('#suite');
-    that.statusContainer = $('#status');		
+    that.statusContainer = document.getElementById('status');
+    that.runnerContainer = document.getElementById('suite');
 
     that._status = 'idle';
     that._setStatus(that._status);
@@ -38,10 +38,10 @@ nimbo.capture = {
   _runSuite: function (suite_id) {
     var runner = document.createElement('iframe');
     runner.src = "/suite_runner";
-    this.suiteContainer.append(runner);
+    this.runnerContainer.appendChild(runner);
   },
   _removeSuite: function () {
-    this.suiteContainer.empty();
+    this.runnerContainer.innerHTML = "";
   },
   _onSuiteMessage: function (data) {
     this._setStatus('idle');
@@ -50,9 +50,7 @@ nimbo.capture = {
   },
   _setStatus: function (status) {
     this._status = status;
-    document.getElementById('status').innerHTML = status;
-//     this.statusContainer.empty();
-//     this.statusContainer.text(status);
+    this.statusContainer.innerHTML = status;
   }
 };
 
