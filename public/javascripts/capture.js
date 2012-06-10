@@ -46,7 +46,7 @@ nimbo.capture = {
   _onSuiteMessage: function (data) {
     this._setStatus('idle');
     this._removeSuite();
-    $.post('/suite_end', data);
+    $.post('/suite_result', data);
   },
   _setStatus: function (status) {
     this._status = status;

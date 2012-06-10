@@ -23,14 +23,14 @@ class NimboDriver < Sinatra::Base
     erb :runner
   end
 
-  get '/suite_start/:id' do
+  get '/suite_run/:id' do
     result = nil
     suite_id = params[:id]
     until result do end
     { result: result }.to_json
   end
 
-  get '/suite_end' do
+  get '/suite_result' do
     result = params
     suite_id = nil
   end
