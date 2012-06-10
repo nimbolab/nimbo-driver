@@ -5,7 +5,7 @@ nimbo.capture = {
     var that = this;
 
     that.statusContainer = document.getElementById('status');
-    that.runnerContainer = document.getElementById('suite');
+    that.runnerContainer = document.getElementById('runner');
 
     that._status = 'idle';
     that._setStatus(that._status);
