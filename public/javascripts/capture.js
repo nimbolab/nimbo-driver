@@ -30,7 +30,7 @@ nimbo.capture = {
     var suite_id = JSON.parse(data);
     if (suite_id) {
       this._setStatus('running');
-      this._runSuite(suite_id)
+      this._runSuite(suite_id);
     } else {
       this._setStatus('idle');
     }
@@ -50,7 +50,7 @@ nimbo.capture = {
   },
   _setStatus: function (status) {
     this._status = status;
-    this.statusContainer.text(status);
+    this.statusContainer.text(this._status);
   }
 };
 
