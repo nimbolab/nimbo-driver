@@ -4,18 +4,25 @@ require 'json'
 
 class NimboDriver < Sinatra::Base
 
-  suite_id = nil
-  result = nil
+  suites = []
+  results = {}
 
   get '/capture' do
     erb :capture
   end
 
-  get '/suite_get' do
-    suite_id.to_json
+  get '/status' do
+    status = "status:<br>"
+    results.each { |suite_id, result| status << "#{suite_id}: #{result}<br>" }
+    status
   end
 
-  get '/suite_runner' do
+  get '/suite_get' do
+    suites.pop.to_json
+  end
+
+  get '/suite_runner/:id' do
+    suite_id = params[:id]
     config = YAML.load_file("public/suites/#{suite_id}/.nimbo.yml")
     @suite_id = suite_id
     @client_scripts = config["src"]
@@ -23,14 +30,14 @@ class NimboDriver < Sinatra::Base
   end
 
   get '/suite_run/:id' do
-    result = nil
     suite_id = params[:id]
-    until result do end
-    { result: result }.to_json
+    suites << suite_id
+    "added #{suite_id}"
   end
 
-  post '/suite_result' do
-    result = params
-    suite_id = nil
+  post '/suite_result/:id' do
+      results[params[:id]] = params[:result]
+      "result: #{params[:result]}"
   end
+
 end
